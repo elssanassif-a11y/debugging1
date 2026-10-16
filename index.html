@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Buggy Example</title>
+<style>
+body {
+background-color: lightblue; <!--there is a - missing in background so it didn't work-->
+}
+
+#box {
+    position: absolute;
+width: 100px;
+height: 100px;
+background: red;
+}
+</style>
+</head>
+<body>
+
+<h1>Bug Practice</h1>
+
+<input id="nameInput" type="text">
+<button onclick="start()">Start</button>
+
+<div id="box"></div>
+
+<script>
+let counter = 0;<!--variable without "let"-->
+
+function start() {
+let input = document.getElementById("nameInput");<!--wrong id-->
+console.log(input.value);
+
+interval = setInterval(function () {
+counter++;
+
+document.body.style.backgroundColor = "yellow";<!--incorrect background style property-->
+
+let box = document.getElementById("box");<!--wrong id-->
+box.style.left = counter*20 + "px";<!--i added *20 to be faster-->
+if (counter >= 10){ <!--using counter wrong without if  condition-->
+    clearInterval(interval);
+};
+},1000);<!--I added time for setinterval-->
+}
+</script>
+
+</body>
+</html>
